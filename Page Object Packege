@@ -1,0 +1,48 @@
+Create a public class in to page object package and write all code under this class for execution of feature file steps.
+package pageobject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage {
+	
+	WebDriver ldriver; 
+	
+	public LoginPage(WebDriver rDriver)
+	{
+		ldriver=rDriver;
+		
+		PageFactory.initElements(rDriver, this);
+	}
+	
+	@FindBy(id ="Email" )
+	
+	WebElement email;
+	
+	@FindBy(id="Password")
+	WebElement Password;
+	
+	@FindBy(xpath="//button[normalize-space()='Log in']")
+	WebElement LoginBtn;
+	
+	@FindBy (linkText="Logout")
+	WebElement Logout;
+	
+	public void enterEmail(String EmailAdd)
+	
+	{email.sendKeys("EmailAdd");
+	}
+	
+	public void enterPassword(String Pwd)
+	{Password.sendKeys("Pwd");}
+	
+	public void clickOnLoginButton()
+	{LoginBtn.click();}
+	
+
+	public void clickOnLogoutButton()
+	{Logout.click();}
+
+}
